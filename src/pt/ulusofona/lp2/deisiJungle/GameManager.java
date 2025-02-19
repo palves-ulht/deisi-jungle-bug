@@ -284,57 +284,81 @@ public class GameManager {
         for (Jogador g : jogadores) {
             if (g.getTurnoJogador() == nrTurnos) {
                 if (nrSquares < 0) {
-                    if (!g.getVelocidade().contains(nrSquares * -1) && !bypassValidations) {nrTurnosAndReset();
-                        return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);}
+                    if (!g.getVelocidade().contains(nrSquares * -1) && !bypassValidations) {
+                        nrTurnosAndReset();
+                        return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);
+                    }
                     if (g.getEnergia() > 0) {
-                        if (g.getEnergia() < g.getEspecies().getConsumoEnergia() * (nrSquares *-1)){nrTurnosAndReset();
+                        if (g.getEnergia() < g.getEspecies().getConsumoEnergia() * (nrSquares * -1)) {
+                            nrTurnosAndReset();
                             return new MovementResult(MovementResultCode.NO_ENERGY, null);
                         }//verificamos se ele anda para tras da 1ºcasa
-                        if (g.getPosicao() + nrSquares < 1) {nrTurnosAndReset();
-                            return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);}
+                        if (g.getPosicao() + nrSquares < 1) {
+                            nrTurnosAndReset();
+                            return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);
+                        }
                         for (Alimento alimento : alimentos) {
                             if (g.getPosicao() + nrSquares == alimento.getPosicao()) {
                                 if (Objects.equals(g.getEspecies().getId(), "E") && Objects.equals(alimento.getId(), "c")) {
                                     elephantEnergyAndPositionMoveBack(g, nrSquares);
                                     return new MovementResult(MovementResultCode.VALID_MOVEMENT, null);
-                                }energyAndPositionWithCatchFoodMoveBack(g, nrSquares);
+                                }
+                                energyAndPositionWithCatchFoodMoveBack(g, nrSquares);
                                 return new MovementResult(MovementResultCode.CAUGHT_FOOD, "Apanhou " + checkFood(alimento.getId()));
-                            }}energyAndPositiondMoveBack(g, nrSquares);
-                    } else {energyAndPositiondDontMove(g, nrSquares);
-                        return new MovementResult(MovementResultCode.NO_ENERGY, null);}
+                            }
+                        }
+                        energyAndPositiondMoveBack(g, nrSquares);
+                    } else {
+                        energyAndPositiondDontMove(g, nrSquares);
+                        return new MovementResult(MovementResultCode.NO_ENERGY, null);
+                    }
                 }
                 if (nrSquares > 0) {
-                    if (!g.getVelocidade().contains(nrSquares) && !bypassValidations) {nrTurnosAndReset();
-                        return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);}
+                    if (!g.getVelocidade().contains(nrSquares) && !bypassValidations) {
+                        nrTurnosAndReset();
+                        return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);
+                    }
                     if (g.getEnergia() > 0) {
-                        if (g.getEnergia() < g.getEspecies().getConsumoEnergia() * nrSquares){
+                        if (g.getEnergia() < g.getEspecies().getConsumoEnergia() * nrSquares) {
                             energyAndPositiondDontMove(g, nrSquares); // palves
                             nrTurnosAndReset();
-                            return new MovementResult(MovementResultCode.NO_ENERGY, null);}
-                        if (g.getPosicao() + nrSquares > tamanhoDoBoard) {g.setPosicao(tamanhoDoBoard);vencedor = true;
+                            return new MovementResult(MovementResultCode.NO_ENERGY, null);
+                        }
+                        if (g.getPosicao() + nrSquares > tamanhoDoBoard) {
+                            g.setPosicao(tamanhoDoBoard);
+                            vencedor = true;
                         } else {
                             for (Alimento alimento : alimentos) {
                                 if (g.getPosicao() + nrSquares == alimento.getPosicao()) {
-                                    if (Objects.equals(g.getEspecies().getId(), "E") && Objects.equals(alimento.getId(), "c")) {elephantEnergyAndPositionMoveFoward(g, nrSquares);
+                                    if (Objects.equals(g.getEspecies().getId(), "E") && Objects.equals(alimento.getId(), "c")) {
+                                        elephantEnergyAndPositionMoveFoward(g, nrSquares);
                                         return new MovementResult(MovementResultCode.VALID_MOVEMENT, null);
-                                    }energyAndPositionWithCatchFoodMoveFoward(g, nrSquares);
+                                    }
+                                    energyAndPositionWithCatchFoodMoveFoward(g, nrSquares);
                                     return new MovementResult(MovementResultCode.CAUGHT_FOOD, "Apanhou " + checkFood(alimento.getId()));
                                 }
-                            }energyAndPositiondMoveFoward(g, nrSquares);
+                            }
+                            energyAndPositiondMoveFoward(g, nrSquares);
                         }
-                    } else {energyAndPositiondDontMove(g, nrSquares);nrTurnosAndReset();
+                    } else {
+                        energyAndPositiondDontMove(g, nrSquares);
+                        nrTurnosAndReset();
                         return new MovementResult(MovementResultCode.NO_ENERGY, null);
                     }
                 }
                 if (nrSquares == 0) {
-                    for (Alimento a : alimentos){
-                        if (g.getPosicao() == a.getPosicao()){dontMoveFoodEnergy(g,nrSquares);
+                    for (Alimento a : alimentos) {
+                        if (g.getPosicao() == a.getPosicao()) {
+                            dontMoveFoodEnergy(g, nrSquares);
                             return new MovementResult(MovementResultCode.CAUGHT_FOOD, "Apanhou " + checkFood(a.getId()));
                         }
-                    }energyAndPositiondDontMove(g, nrSquares);
+                    }
+                    energyAndPositiondDontMove(g, nrSquares);
                 }
             }
-        }checkPositionPlayers();nrTurnosAndReset();
+        }
+        checkPositionPlayers();
+        nrTurnosAndReset();
         return new MovementResult(MovementResultCode.VALID_MOVEMENT, null);
     }
 

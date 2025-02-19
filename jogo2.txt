@@ -1,7 +1,7 @@
 47
 0
 1
-1;1;Pedro;E;180;1;[1, 2, 3, 4, 5, 6];Elefante;4;10
-2;1;Sara;P;70;2;[5, 6];Passaro;4;50
+1;1;Sara;P;70;1;[5, 6];Passaro;4;50
+2;1;Pedro;E;180;2;[1, 2, 3, 4, 5, 6];Elefante;4;10
 alimentos:
-b;18;0;3
+c;20;0;0
