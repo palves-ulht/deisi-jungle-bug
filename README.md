@@ -4,9 +4,15 @@ Projeto de LP2 2022/23 (deisi jungle)
 
 # Erro
 
-GameManager:311 (procurar por // palves)
-
-Essa linha está a mais
+GameManager:322
+```
+if (g.getEnergia() > 0) {
+      if (g.getEnergia() < g.getEspecies().getConsumoEnergia() * nrSquares) {
+          energyAndPositiondDontMove(g, nrSquares); // << esta linha está a mais
+          nrTurnosAndReset();
+          return new MovementResult(MovementResultCode.NO_ENERGY, null);
+      }
+```
 
 
 # Guião

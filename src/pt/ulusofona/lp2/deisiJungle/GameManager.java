@@ -320,7 +320,7 @@ public class GameManager {
                     }
                     if (g.getEnergia() > 0) {
                         if (g.getEnergia() < g.getEspecies().getConsumoEnergia() * nrSquares) {
-                            energyAndPositiondDontMove(g, nrSquares); // palves
+                            energyAndPositiondDontMove(g, nrSquares);
                             nrTurnosAndReset();
                             return new MovementResult(MovementResultCode.NO_ENERGY, null);
                         }
