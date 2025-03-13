@@ -665,7 +665,6 @@ public class GameManager {
         int distancia = g.getDistancia();
         distancia += nrSquares * -1;
         g.setDistancia(distancia);
-        System.out.println("distancia" + distancia);
         int alimentosApanhados = g.getNrAlimentosApanhados();
         alimentosApanhados += 1;
         g.setNrAlimentosApanhados(alimentosApanhados);
@@ -701,7 +700,6 @@ public class GameManager {
         int distancia = g.getDistancia();
         distancia += nrSquares * -1;
         g.setDistancia(distancia);
-        System.out.println("distancia" + distancia);
         energia += g.getEspecies().getConsumoEnergia() * nrSquares;
 
 
@@ -721,7 +719,6 @@ public class GameManager {
         int distancia = g.getDistancia();
         distancia += nrSquares;
         g.setDistancia(distancia);
-        System.out.println("distancia" + distancia);
         energia -= g.getEspecies().getConsumoEnergia() * nrSquares;
 
         g.setEnergia(energia);
@@ -738,7 +735,6 @@ public class GameManager {
         int distancia = g.getDistancia();
         distancia += nrSquares;
         g.setDistancia(distancia);
-        System.out.println("distancia" + distancia);
         int alimentosApanhados = g.getNrAlimentosApanhados();
         alimentosApanhados += 1;
         g.setNrAlimentosApanhados(alimentosApanhados);
@@ -776,7 +772,6 @@ public class GameManager {
         int distancia = g.getDistancia();
         distancia += nrSquares;
         g.setDistancia(distancia);
-        System.out.println("distancia" + distancia);
         energia -= g.getEspecies().getConsumoEnergia() * nrSquares;
 
 
