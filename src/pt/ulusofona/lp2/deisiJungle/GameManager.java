@@ -647,7 +647,6 @@ public class GameManager {
         int distancia = g.getDistancia();
         distancia += nrSquares * -1;
         g.setDistancia(distancia);
-        System.out.println("distancia" + distancia);
         energia += g.getEspecies().getConsumoEnergia() * nrSquares;
         if (energia > 200) {
             g.setEnergia(200);
